@@ -35,6 +35,10 @@ li {
   line-height: 20px;
 }
 
+.current-weather-icon {
+  width: 128px;
+  float: right;
+}
 .weather-icon {
   width: 64px;
 }
