@@ -15,97 +15,150 @@
 
     <title>Weather</title>
   </head>
+
   <body>
-    		
     <div class="container">
-        <br> 
+      <br />
       <form id="search">
-              <div class="input-group input-group-lg">              
-              <input type="text" class="form-control"  placeholder="Search City" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="city">
-              <button class="btn btn-outline-secondary" type="submit" id="button-search">🔍</button>
-              <button class="btn btn-outline-secondary" type="button" id="button-current-location"><img src="src/images/current.png" alt="Currrent" height="25"></button>
-            </div>
-      </form> 
-
-      <h1>
-        Dnipro
-      </h1>
-
-<div class="row">
-  <div class="col-6">
-    <div class="current-date"></div>
-    <span class="temperature">37</span>
-    <span class="temperature-units"><a href="#" id="celsium">°C</a>|<a href="#" id="fahrenheit">°F</a></span>  
-  </div>
-    <div class="col-6 ">
-      <img src="src/images/mostly_cloudy.png" class = "current-weather-icon " id="weatherIcon" alt="Mostly cloudy">       
-
-    </div>
-    
-</div>
-
-
-    
-      
-      <div class="container text-center">
-        <div class="row justify-content-between">
-          <div class="col-sm-4 p-3 border border-primary" id="clouds">Clouds</div>
-          <div class="col-sm-3 p-3 border border-primary" id="humidity">Humidity</div>
-          <div class="col-sm-4 p-3 border border-primary" id="wind">Wind</div>
+        <div class="input-group input-group-lg">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search City"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg"
+            id="city"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="submit"
+            id="button-search"
+          >
+            🔍
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="button-current-location"
+          >
+            <img src="src/images/current.png" alt="Currrent" height="25" />
+          </button>
         </div>
-      
-    
-      <hr>
+      </form>
 
-      
-                <div class="card-group">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title" >Sun</h5>
-                <img src="src/images/sunny.png" class="card-img-top weather-icon" alt="Sunny">                  
-                <p class="card-text">
-                  <small class="text-muted">day 30°/ night 23°</small>
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Mon</h5>
-                <img src="src/images/mostly_cloudy.png" class="card-img-top weather-icon" alt="Mostly cloudy">       
-                 <p class="card-text">
-                  <small class="text-muted">day 33°/ night 23°</small>
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Tue</h5>
-                <img src="src/images/mostly_cloudy.png" class="card-img-top weather-icon" alt="Mostly cloudy">       
-                <p class="card-text">
-                 <small class="text-muted">day 33°/ night 23°</small>
-               </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Wed</h5>
-                <img src="src/images/rain.png" class="card-img-top weather-icon" alt="Rainy">       
-                <p class="card-text">
-                  <small class="text-muted">day 25°/ night 19°</small>
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Thu</h5>
-                <img src="src/images/mostly_cloudy.png" class="card-img-top weather-icon" alt="Mostly cloudy">       
-                <p class="card-text">
-                  <small class="text-muted"> day 25°/ night 19°</small>
-                
+      <h1></h1>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="current-date"></div>
+          <span class="temperature"></span>
+          <span class="temperature-units"
+            ><a href="#" id="celsium" class="active">°C</a>|<a
+              href="#"
+              id="fahrenheit"
+              >°F</a
+            ></span
+          >
+        </div>
+        <div class="col-6">
+          <img
+            src="src/images/mostly_cloudy.png"
+            class="current-weather-icon"
+            id="weatherIcon"
+            alt="Mostly cloudy"
+          />
         </div>
       </div>
+
+      <div class="container text-center">
+        <div class="row justify-content-between">
+          <div class="col-sm-4 p-3 border border-primary" id="clouds">
+            Clouds
+          </div>
+          <div class="col-sm-3 p-3 border border-primary" id="humidity">
+            Humidity
+          </div>
+          <div class="col-sm-4 p-3 border border-primary" id="wind">Wind</div>
+        </div>
+
+        <hr />
+
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sun</h5>
+              <img
+                src="src/images/sunny.png"
+                class="card-img-top weather-icon"
+                alt="Sunny"
+              />
+              <p class="card-text">
+                <small class="text-muted">day 30°/ night 23°</small>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mon</h5>
+              <img
+                src="src/images/mostly_cloudy.png"
+                class="card-img-top weather-icon"
+                alt="Mostly cloudy"
+              />
+              <p class="card-text">
+                <small class="text-muted">day 33°/ night 23°</small>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tue</h5>
+              <img
+                src="src/images/mostly_cloudy.png"
+                class="card-img-top weather-icon"
+                alt="Mostly cloudy"
+              />
+              <p class="card-text">
+                <small class="text-muted">day 33°/ night 23°</small>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Wed</h5>
+              <img
+                src="src/images/rain.png"
+                class="card-img-top weather-icon"
+                alt="Rainy"
+              />
+              <p class="card-text">
+                <small class="text-muted">day 25°/ night 19°</small>
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Thu</h5>
+              <img
+                src="src/images/mostly_cloudy.png"
+                class="card-img-top weather-icon"
+                alt="Mostly cloudy"
+              />
+              <p class="card-text">
+                <small class="text-muted"> day 25°/ night 19°</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <small
+          ><a
+            href="https://github.com/FullMoonRaccoon/weather-app"
+            target="_blank"
+            >Open-source code</a
+          >, by Olha Kudriavtseva</small
+        >
+      </div>
     </div>
-    <small><a href="https://github.com/FullMoonRaccoon/weather-app" target="_blank">Open-source code</a>, by Olha Kudriavtseva</small>
 
     <script src="src/index.js"></script>
   </body>
