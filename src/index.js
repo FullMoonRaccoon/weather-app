@@ -25,6 +25,7 @@ function getCity(event) {
   let city = document.querySelector("#city").value;
   //if input is not empty send request
   if (city !== "") {
+    document.querySelector("#city").value = "";
     let apiKey = "e6275d42883d7f2a6c4f0e2e18e90b64";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showWeather);
