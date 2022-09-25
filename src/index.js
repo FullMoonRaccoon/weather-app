@@ -61,7 +61,7 @@ function showWeather(response) {
   );
   let currentDate = `Last updated: ${dayNames[date.getDay()]} ${formatTime(
     date
-  )}, <br>Local time ${dayNames[localDate.getDay()]} ${formatTime(localDate)}`;
+  )}, <br>Local time: ${dayNames[localDate.getDay()]} ${formatTime(localDate)}`;
   document.querySelector(".current-date").innerHTML = currentDate;
 
   //let presipitation = response.data.main.presipitation;
