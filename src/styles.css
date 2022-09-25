@@ -54,3 +54,7 @@ li {
   text-decoration: none;
   cursor: default;
 }
+
+#weatherDescription:first-letter {
+  text-transform: capitalize;
+}

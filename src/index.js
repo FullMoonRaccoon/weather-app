@@ -11,9 +11,12 @@ const dayNames = [
 function getCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city").value;
-  let apiKey = "e6275d42883d7f2a6c4f0e2e18e90b64";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
+  //if input is not empty send request
+  if (city !== "") {
+    let apiKey = "e6275d42883d7f2a6c4f0e2e18e90b64";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showWeather);
+  }
 }
 
 function showWeather(response) {
@@ -30,7 +33,14 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = `Wind:${Math.round(
     response.data.wind.speed
   )} m/s`;
-
+  let icon = document.querySelector("#weatherIcon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
+  let description = document.querySelector("#weatherDescription");
+  description.innerHTML = response.data.weather[0].description;
   //let presipitation = response.data.main.presipitation;
   //console.log(response.data);
 }
