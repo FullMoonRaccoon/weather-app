@@ -43,8 +43,8 @@ function showWeather(response) {
     "#humidity"
   ).innerHTML = `Humidity: ${response.data.main.humidity} %`;
   document.querySelector("#wind").innerHTML = `Wind:${Math.round(
-    response.data.wind.speed
-  )} m/s`;
+    response.data.wind.speed * 3.6
+  )} km/h`;
   let icon = document.querySelector("#weatherIcon");
   icon.setAttribute(
     "src",
@@ -61,7 +61,7 @@ function showWeather(response) {
   );
   let currentDate = `Last updated: ${dayNames[date.getDay()]} ${formatTime(
     date
-  )}, local ${dayNames[localDate.getDay()]} ${formatTime(localDate)}`;
+  )}, <br>Local time ${dayNames[localDate.getDay()]} ${formatTime(localDate)}`;
   document.querySelector(".current-date").innerHTML = currentDate;
 
   //let presipitation = response.data.main.presipitation;
