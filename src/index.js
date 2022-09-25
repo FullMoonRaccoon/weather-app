@@ -8,6 +8,18 @@ const dayNames = [
   "Saturday",
 ];
 
+function formatTime(date) {
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 function getCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city").value;
@@ -41,6 +53,17 @@ function showWeather(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
   let description = document.querySelector("#weatherDescription");
   description.innerHTML = response.data.weather[0].description;
+
+  let date = new Date();
+  let localDate = new Date(
+    date.getTime() +
+      (date.getTimezoneOffset() * 60 + response.data.timezone) * 1000
+  );
+  let currentDate = `Last updated: ${dayNames[date.getDay()]} ${formatTime(
+    date
+  )}, local ${dayNames[localDate.getDay()]} ${formatTime(localDate)}`;
+  document.querySelector(".current-date").innerHTML = currentDate;
+
   //let presipitation = response.data.main.presipitation;
   //console.log(response.data);
 }
@@ -76,12 +99,6 @@ function getCurrentLocation(event) {
 
 //code that runs when the page loads and global variables
 let celsiusTemperature = null;
-let date = new Date();
-let currentDate = `${dayNames[date.getDay()]} ${date.toLocaleTimeString(
-  "it-IT",
-  { timeStyle: "short" }
-)}`;
-document.querySelector(".current-date").innerHTML = currentDate;
 
 let searchForm = document.querySelector("#search");
 searchForm.addEventListener("submit", getCity);
