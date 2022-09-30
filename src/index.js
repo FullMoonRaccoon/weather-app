@@ -33,6 +33,7 @@ function getCity(event) {
 }
 
 function showWeather(response) {
+  displayForecast();
   document.querySelector(`h1`).innerHTML = response.data.name;
   celsiusTemperature = response.data.main.temp;
   document.querySelector(".temperature").innerHTML =
@@ -96,6 +97,30 @@ function getWeatherByLocation(position) {
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getWeatherByLocation);
+}
+
+//show forecast using template in HTML
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = "";
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastElement.innerHTML += `<div class="card">
+    <div class="card-body">
+      <h5 class="card-title weather-forecast-date">${day}</h5>
+      <img
+        src="src/images/sunny.png"
+        class="card-img-top weather-icon"
+        alt="Sunny"
+      />
+      <p class="card-text">
+        <small class="text-muted"
+          ><div class="weather-forecast-temp-max">day 30°</div>
+          <div class="weather-forecast-temp-min">night 23°</div></small
+        >
+      </p>
+    </div>`;
+  });
 }
 
 //code that runs when the page loads and global variables
