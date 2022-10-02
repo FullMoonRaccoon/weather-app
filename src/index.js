@@ -20,6 +20,13 @@ function formatTime(date) {
   return `${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = dayNames[date.getDay()];
+
+  return day.slice(0, 3);
+}
+
 function getCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city").value;
@@ -32,8 +39,13 @@ function getCity(event) {
   }
 }
 
+function getForecast(coordinates) {
+  let apiKey = "bd3bb6534458ba51b48c49f5155745b6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
-  displayForecast();
   document.querySelector(`h1`).innerHTML = response.data.name;
   celsiusTemperature = response.data.main.temp;
   document.querySelector(".temperature").innerHTML =
@@ -68,6 +80,8 @@ function showWeather(response) {
 
   //let presipitation = response.data.main.presipitation;
   //console.log(response.data);
+
+  getForecast(response.data.coord);
 }
 
 function setCelsium(event) {
@@ -100,25 +114,36 @@ function getCurrentLocation(event) {
 }
 
 //show forecast using template in HTML
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
+  let forecast = response.data.daily.slice(1, 6);
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = "";
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastElement.innerHTML += `<div class="card">
     <div class="card-body">
-      <h5 class="card-title weather-forecast-date">${day}</h5>
+      <h5 class="card-title weather-forecast-date">${formatDay(
+        forecastDay.dt
+      )}</h5>
       <img
-        src="src/images/sunny.png"
+        src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png"
         class="card-img-top weather-icon"
-        alt="Sunny"
+        alt="${forecastDay.weather[0].main}"
       />
       <p class="card-text">
         <small class="text-muted"
-          ><div class="weather-forecast-temp-max">day 30°</div>
-          <div class="weather-forecast-temp-min">night 23°</div></small
+          ><div class="weather-forecast-temp-max">day ${Math.round(
+            forecastDay.temp.max
+          )}°</div>
+          <div class="weather-forecast-temp-min">night ${Math.round(
+            forecastDay.temp.min
+          )}°</div></small
         >
       </p>
+    </div>
     </div>`;
   });
 }
